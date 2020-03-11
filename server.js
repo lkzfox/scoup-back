@@ -2,11 +2,12 @@ const dotenv = require('dotenv').config()
 const express = require('express')
 const { sequelize } = require('./connection')
 const errorController = require('./controllers/error')
-const AppError = require('./utils/error')
+const { AppError } = require('./utils/error')
 const app = express();
 
 app.use(express.json())
 
+app.use('/api/v1/auth', require('./routers/auth'))
 app.use('/api/v1/user', require('./routers/user'))
 
 // Middleware to handle undefined endpoints
