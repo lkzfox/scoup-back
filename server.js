@@ -1,6 +1,7 @@
-const dotenv = require('dotenv').config()
+require('dotenv').config()
 const express = require('express')
 const { sequelize } = require('./connection')
+require('./models/associations')
 const errorController = require('./controllers/error')
 const { AppError } = require('./utils/error')
 const app = express();
@@ -9,6 +10,7 @@ app.use(express.json())
 
 app.use('/api/v1/auth', require('./routers/auth'))
 app.use('/api/v1/user', require('./routers/user'))
+app.use('/api/v1/store', require('./routers/store'))
 
 // Middleware to handle undefined endpoints
 app.use('*', (req, res, next) => {

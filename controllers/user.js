@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt')
 const User = require('../models/User')
+const Store = require('../models/Store')
 const { sucessResponse } = require('../factories/responseFactory')
 const catchError = require('../utils/catchError')
 
@@ -8,7 +9,11 @@ exports.me = (req, res) => {
 }
 
 exports.getAllUsers = catchError(async (req, res, next) => {
-    const users = await User.findAll();
+    const users = await User.findAll({
+        include: Store
+    });
+    console.log(User);
+    
     return sucessResponse(res, 200, users)
 })
 
