@@ -24,3 +24,10 @@ exports.getPromotion = catchError(async (req, res, next) => {
     })
     return sucessResponse(res, 200, promotion)
 })
+
+exports.addValue = catchError(async (req, res, next) => {
+    const promotion = await Promotion.findByPk(req.params.id, {
+        include: PromotionType
+    })
+    return sucessResponse(res, 200, promotion)
+})
