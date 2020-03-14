@@ -1,21 +1,22 @@
 const { SZ, sequelize } = require('../connection')
 
-class Store extends SZ.Model {}
+class PromotionType extends SZ.Model {}
 
-Store.init({
+PromotionType.init({
     id: {
         type: SZ.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
     name: SZ.STRING,
-    id_user: SZ.INTEGER
+    is_value: SZ.BOOLEAN,
+    is_amount: SZ.BOOLEAN
 }, {
     sequelize,
-    tableName: 'stores',
-    modelName: 'store',
+    tableName: 'promotion_types',
+    modelName: 'promotion_type',
     schema: 'scoup_dev',
     timestamps: false
 })
 
-module.exports = Store;
+module.exports = PromotionType;

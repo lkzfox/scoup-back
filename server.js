@@ -11,10 +11,11 @@ app.use(express.json())
 app.use('/api/v1/auth', require('./routers/auth'))
 app.use('/api/v1/user', require('./routers/user'))
 app.use('/api/v1/store', require('./routers/store'))
+app.use('/api/v1/store/:id_store/promotion', require('./routers/promotion'))
 
 // Middleware to handle undefined endpoints
 app.use('*', (req, res, next) => {
-    next(new AppError('Endpoint not available', 400))
+    next(new AppError('Endpoint not available', 404))
 })
 
 // Middleware to handle errors
