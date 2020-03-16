@@ -1,5 +1,6 @@
 const Promotion = require('../models/Promotion')
 const PromotionType = require('../models/PromotionType')
+const Card = require('../models/Card')
 const { sucessResponse } = require('../factories/responseFactory')
 const catchError = require('../utils/catchError')
 
@@ -26,8 +27,28 @@ exports.getPromotion = catchError(async (req, res, next) => {
 })
 
 exports.addValue = catchError(async (req, res, next) => {
-    const promotion = await Promotion.findByPk(req.params.id, {
-        include: PromotionType
+    let { id_customer, value } = req.body
+    const id_promotion = req.params.id_promotion
+    value = parseFloat(value);
+
+    let card = await Card.findOne({
+        where: {
+            id_promotion,
+            id_customer
+        }
     })
-    return sucessResponse(res, 200, promotion)
+
+    if (!card) {
+        card = await Card.create({
+            id_customer,
+            id_promotion,
+            value
+        })
+    } else {
+        card = await card.update({
+            value: value + card.valueFloat
+        })
+    }
+
+    return sucessResponse(res, 200, card)
 })

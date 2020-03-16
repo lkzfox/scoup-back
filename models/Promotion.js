@@ -24,7 +24,7 @@ Promotion.init({
     },
     finish_date: SZ.DATEONLY,
     goal: {
-        type: SZ.FLOAT(8,2),
+        type: SZ.DECIMAL(8,2),
         allowNull: false
     }
 

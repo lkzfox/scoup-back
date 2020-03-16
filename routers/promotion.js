@@ -13,7 +13,7 @@ router
     .get(protect, getPromotion)
 
 router
-    .route('/:id/value')
+    .route('/:id_promotion/value')
     .post(protect, addValue)
     
 

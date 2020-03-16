@@ -1,4 +1,7 @@
 const Customer = require('../models/Customer')
+const Card = require('../models/Card')
+const Promotion = require('../models/Promotion')
+const PromotionType = require('../models/PromotionType')
 const { sucessResponse, errorResponse } = require('../factories/responseFactory')
 const catchError = require('../utils/catchError')
 
@@ -6,6 +9,13 @@ exports.getCustomer = catchError(async (req, res, next) => {
     const customer = await Customer.findOne({
         where: {
             phone_number: req.params.phone_number
+        },
+        include: {
+            model: Card,
+            include: {
+                model: Promotion,
+                include: PromotionType
+            }
         }
     })
 
