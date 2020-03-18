@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router({ mergeParams: true })
-const { getPromotions, createPromotion, getPromotion, addValue } = require('../controllers/promotion')
+const { getPromotions, createPromotion, getPromotion, addValue, removeValue } = require('../controllers/promotion')
 const { protect } = require('../controllers/auth')
 
 router
@@ -15,6 +15,7 @@ router
 router
     .route('/:id_promotion/value')
     .post(protect, addValue)
+    .patch(protect, removeValue)
     
 
 module.exports = router

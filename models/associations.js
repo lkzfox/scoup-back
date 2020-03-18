@@ -3,6 +3,7 @@ const Store = require('./Store')
 const PromotionType = require('./PromotionType')
 const Promotion = require('./Promotion')
 const Card = require('./Card')
+const CardHistory = require('./CardHistory')
 const Customer = require('./Customer')
 
 module.exports = (() => {
@@ -20,6 +21,9 @@ module.exports = (() => {
 
     Card.belongsTo(Customer, { foreignKey: 'id_customer' })
     Card.belongsTo(Promotion, { foreignKey: 'id_promotion' })
+    Card.hasMany(CardHistory, { foreignKey: 'id_card' })
+
+    CardHistory.belongsTo(Card, { foreignKey: 'id_card' })
 
     Customer.hasMany(Card, { foreignKey: 'id_customer' })
 

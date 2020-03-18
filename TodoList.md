@@ -4,8 +4,11 @@
 - [x] User can create a promotion
 - [x] User can check if a customer exists
 - [x] User can create a customer
-- [ ] User can add value to a promotion
-- [ ] User can remove value from a promotion
+- [x] User can add value to a promotion
+- [x] User can remove value from a promotion
+- [ ] User can get full card hsitory with filter by date, customer and user operation
+- [ ] Customer can get his cards
+- [ ] Customer can get a full card history
 
 # Business
 
