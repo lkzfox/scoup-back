@@ -1,6 +1,7 @@
 const { SZ, sequelize } = require('../connection')
+const OwnModel = require('./OwnModel')
 
-class User extends SZ.Model {
+class User extends OwnModel {
 
     passwordChangedAfter(date) {
         if (this.passwordChangedAt) {
@@ -10,7 +11,7 @@ class User extends SZ.Model {
     }
 }
 
-User.init({
+User._init({
     id: {
         type: SZ.INTEGER,
         primaryKey: true,
@@ -24,7 +25,10 @@ User.init({
     },
     name: SZ.STRING,
     password: SZ.STRING,
-    passwordChangedAt: SZ.DATE,
+    passwordChangedAt: {
+        type: SZ.DATE,
+        noTZ: true
+    },
     phone_number: SZ.STRING
 }, {
     sequelize,

@@ -1,8 +1,9 @@
 const { SZ, sequelize } = require('../connection')
+const OwnModel = require('./OwnModel')
 
-class Promotion extends SZ.Model {}
+class Promotion extends OwnModel {}
 
-Promotion.init({
+Promotion._init({
     id: {
         type: SZ.INTEGER,
         primaryKey: true,
@@ -20,9 +21,13 @@ Promotion.init({
     description: SZ.STRING,
     start_date: {
         type: SZ.DATE,
-        allowNull: false
+        allowNull: false,
+        noTZ: true
     },
-    finish_date: SZ.DATEONLY,
+    finish_date: {
+        type: SZ.DATEONLY,
+        noTZ: true
+    },
     goal: {
         type: SZ.DECIMAL(8,2),
         allowNull: false

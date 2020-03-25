@@ -1,6 +1,8 @@
 const { SZ, sequelize } = require('../connection')
+const OwnModel = require('./OwnModel')
 
-class CardHistory extends SZ.Model {
+
+class CardHistory extends OwnModel {
     static async insertHistory(id_card, id_user_operation, value_before, value_after, transaction) {
         await CardHistory.create({
             id_card,
@@ -12,13 +14,13 @@ class CardHistory extends SZ.Model {
 
 }
 
-CardHistory.init({
+CardHistory._init({
     id: {
         type: SZ.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    id_card: { 
+    id_card: {
         type: SZ.INTEGER,
         allowNull: false
     },
@@ -30,7 +32,8 @@ CardHistory.init({
     value_after: SZ.DECIMAL(8,2),
     date: {
         type: SZ.DATE,
-        defaultValue: SZ.NOW
+        defaultValue: SZ.NOW,
+        noTZ: true
     }   
 }, {
     sequelize,

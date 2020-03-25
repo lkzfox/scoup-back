@@ -12,6 +12,7 @@ module.exports = (() => {
     Store.hasMany(Promotion, { foreignKey: 'id_store' })
     
     User.hasMany(Store, { foreignKey: 'id_user' })
+    User.hasMany(CardHistory, { foreignKey: 'id_user_operation' })
 
     PromotionType.hasMany(Promotion, { foreignKey: 'id_promotion_type' })
 
@@ -24,6 +25,7 @@ module.exports = (() => {
     Card.hasMany(CardHistory, { foreignKey: 'id_card' })
 
     CardHistory.belongsTo(Card, { foreignKey: 'id_card' })
+    CardHistory.belongsTo(User, { foreignKey: 'id_user_operation' })
 
     Customer.hasMany(Card, { foreignKey: 'id_customer' })
 
