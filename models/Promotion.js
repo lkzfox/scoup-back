@@ -31,6 +31,12 @@ Promotion._init({
     goal: {
         type: SZ.DECIMAL(8,2),
         allowNull: false
+    },
+    hasFinished: {
+        type: SZ.VIRTUAL,
+        get: function() {
+            return Date.now > this.finish_date
+        }
     }
 
 }, {

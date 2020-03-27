@@ -5,7 +5,7 @@ const { protect } = require('../controllers/auth')
 
 router
     .route('/:phone_number')
-    .get(protect, getCustomer)
+    .get(getCustomer)
 
 router
     .route('/')

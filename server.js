@@ -13,6 +13,7 @@ app.use('/api/v1/user', require('./routers/user'))
 app.use('/api/v1/store', require('./routers/store'))
 app.use('/api/v1/store/:id_store/promotion', require('./routers/promotion'))
 app.use('/api/v1/customer/', require('./routers/customer'))
+app.use('/api/v1/card/', require('./routers/card'))
 
 // Middleware to handle undefined endpoints
 app.use('*', (req, res, next) => {

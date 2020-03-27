@@ -10,8 +10,8 @@
 - [x] User can remove value from a promotion
 - [x] User can get full card hsitory with filter by date, customer and user operation
 
-- [ ] Customer can get his cards
-- [ ] Customer can get a full card history
+- [x] Customer can get his cards
+- [x] Customer can get a full card history
 
 # Business
 

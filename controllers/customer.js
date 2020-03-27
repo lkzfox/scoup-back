@@ -2,6 +2,7 @@ const Customer = require('../models/Customer')
 const Card = require('../models/Card')
 const Promotion = require('../models/Promotion')
 const PromotionType = require('../models/PromotionType')
+const Store = require('../models/Store')
 const { sucessResponse, errorResponse } = require('../factories/responseFactory')
 const catchError = require('../utils/catchError')
 
@@ -14,7 +15,7 @@ exports.getCustomer = catchError(async (req, res, next) => {
             model: Card,
             include: {
                 model: Promotion,
-                include: PromotionType
+                include: [PromotionType, Store]
             }
         }
     })
