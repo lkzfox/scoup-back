@@ -12,7 +12,6 @@ exports.getAllUsers = catchError(async (req, res, next) => {
     const users = await User.findAll({
         include: Store
     });
-    console.log(User);
     
     return sucessResponse(res, 200, users)
 })

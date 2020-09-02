@@ -1,4 +1,5 @@
 const printLogError = err => {
+    if (process.env.NODE_ENV != 'production') return
     console.log();
     console.error('====== ERROR =====');
     console.error(err);
