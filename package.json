@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=tests jest --watchAll --verbose",
+    "test": "NODE_ENV=tests jest --watchAll --verbose --runInBand",
     "debugtest": "NODE_ENV=tests node server.js",
     "start": "nodemon --inspect server.js"
   },

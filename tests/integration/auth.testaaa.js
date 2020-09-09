@@ -9,12 +9,15 @@ let server;
 describe('api/auth', () => {
 
     beforeEach(() => (async () => {
-        server = require('../../server')
-        await checkDatabaseConnection;
-        await createUser(test_email, test_pwd);
+        delete require.cache[require.resolve('../../server')]
+        server = await require('../../server')
+        await checkDatabaseConnection();
+        await createUser();
         })()
     )
-    afterEach(() => server.close())
+    afterEach(() => {
+        server.close()
+    })
 
     describe('GET /', () => {
         it('should be 200', async () => {

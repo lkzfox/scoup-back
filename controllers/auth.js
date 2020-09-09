@@ -14,7 +14,7 @@ exports.login = catchError(async (req, res, next) => {
         return errorResponse(next, 401, 'Invalid credentials')
     }
 
-    const token = jwt.sign({ id: user.id, name: user.name }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_LIFE })
+    const token = user.createToken()
     return sucessResponse(res, 200, token)
 })
 

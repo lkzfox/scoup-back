@@ -13,10 +13,11 @@ exports.createUser = async (email, pwd) => {
 }
 
 exports.checkDatabaseConnection =  () => {
-    return sequelize.authenticate().then(() => {
-        sequelize.sync({force: true})
-        console.log('DB connected..');
-    })
+    return sequelize.authenticate().then(() => {})
+}
+
+exports.clearDatabase =  () => {
+    return sequelize.sync({force: true})
 }
 
 
